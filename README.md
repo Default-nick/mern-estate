@@ -9,10 +9,10 @@ Todas as informações presentes neste projeto são **simuladas**.
 Este projeto será feito utilizando MERN (MongoDB, Express, ReactJS e NodeJS).
 Também haverá implementação de JWT, Firebase, Google OAuth, Tailwind CSS, entre outros.
 
-# Propósito
+## Propósito
 
 A idéia é simular um site de compra de imóveis, com CRUD, login, autenticação, edição de perfil e tudo mais.
 
-# Estado do código
+## Estado do código
 
 [![DeepScan grade](https://deepscan.io/api/teams/21905/projects/25641/branches/803967/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=21905&pid=25641&bid=803967)
