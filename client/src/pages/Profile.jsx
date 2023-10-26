@@ -25,6 +25,7 @@ export default function Profile() {
     if(file){
       handleFileUpload(file);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[file])
   
 
