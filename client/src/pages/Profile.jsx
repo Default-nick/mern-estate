@@ -120,6 +120,9 @@ export default function Profile() {
   }
 
   const handleShowListings = async()=>{
+    if(userListings.length > 0){
+      return setUserListings([])
+    }
     try {
       setShowListingsError(false);
       const res = await fetch(`/api/user/listings/${currentUser._id}`)
@@ -131,6 +134,21 @@ export default function Profile() {
       setUserListings(data)
     } catch (error) {
       setShowListingsError(true)
+    }
+  }
+
+  const handleListingDelete = async(listingId)=>{
+    try {
+      const res = await fetch(`/api/listing/delete/${listingId}`, {
+        method: 'DELETE',
+      })
+
+      const data =await res.json();
+
+      if(data.success === false) return console.log(data.message);
+      setUserListings((prev)=> prev.filter((listing)=> listing._id !== listingId))
+    } catch (error) {
+      console.log(error.message)
     }
   }
 
@@ -198,7 +216,9 @@ export default function Profile() {
         <p className='text-red-700 mt-5 font-semibold text-center'>{error ? error : ""}</p>
         <p className='text-green-700 mt-5 font-semibold text-center'>{updateSuccess ? 'User is updated successfully!' : ""}</p>
 
-      <button onClick={handleShowListings} className='text-green-700 w-full font-semibold'>Show Listings</button>
+      <button onClick={handleShowListings} className={`text-${userListings.length === 0 ? 'green' : 'red'}-700 w-full font-semibold`}>
+        {userListings.length === 0 ? 'Show': 'Hide'} Listings
+      </button>
       <p className='text-red-700 mt-5 font-semibold text-center'>{showListingsError ? 'Error showing listings' : ''}</p>
       {userListings && userListings.length > 0 && 
         <div className='flex flex-col gap-4'>
@@ -212,7 +232,7 @@ export default function Profile() {
                 <p>{listing.name}</p>
               </Link>
               <div className='flex flex-col items-center'>
-                <button className='text-red-700 uppercase'>
+                <button onClick={()=> handleListingDelete(listing._id)} className='text-red-700 uppercase'>
                   Delete
                 </button>
                 <button className='text-green-700 uppercase'>
