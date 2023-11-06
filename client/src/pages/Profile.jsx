@@ -145,7 +145,9 @@ export default function Profile() {
 
       const data =await res.json();
 
-      if(data.success === false) return console.log(data.message);
+      if(data.success === false) {
+        return console.log(data.message)
+      }
       setUserListings((prev)=> prev.filter((listing)=> listing._id !== listingId))
     } catch (error) {
       console.log(error.message)
