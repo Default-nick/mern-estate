@@ -3,15 +3,17 @@ import { useParams } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore from "swiper";
 import { Navigation } from "swiper/modules";
+import { useSelector } from "react-redux";
 import {
   FaBath,
   FaBed,
   FaChair,
-  FaMapMarkedAlt,
+  FaMapMarkerAlt,
   FaParking,
-  FaShare,
+  FaShareAlt,
 } from "react-icons/fa";
 import "swiper/css/bundle";
+import Contact from "../components/Contact";
 
 export default function Listing() {
   SwiperCore.use([Navigation]);
@@ -20,6 +22,8 @@ export default function Listing() {
   const [loading, setLoading] = useState(true);
   const [copied, setCopied] = useState(false);
   const [error, setError] = useState(false);
+  const [contact, setContact] = useState(false);
+  const { currentUser } = useSelector((state) => state.user);
 
   useEffect(() => {
     const fetchListing = async () => {
@@ -67,7 +71,7 @@ export default function Listing() {
             className="fixed top-[13%] right-[3%] z-10 border rounded-full w-12 h-12
             flex justify-center items-center bg-slate-100 cursor-pointer"
           >
-            <FaShare
+            <FaShareAlt
               className="text-slate-500"
               onClick={() => {
                 navigator.clipboard.writeText(window.location.href);
@@ -92,7 +96,7 @@ export default function Listing() {
               {listing.type === "rent" && " / month"}
             </p>
             <p className="flex items-center mt-6 gap-2 text-slate-600 text-sm">
-              <FaMapMarkedAlt className="text-green-700" />
+              <FaMapMarkerAlt className="text-green-700" />
               {listing.address}
             </p>
             <div className="flex gap-4">
@@ -131,6 +135,17 @@ export default function Listing() {
                 {listing.furnished ? "Furnished" : "No Furnished"}
               </li>
             </ul>
+            {currentUser &&
+              listing?.userRef !== currentUser._id &&
+              !contact && (
+                <button
+                  onClick={() => setContact(true)}
+                  className="bg-slate-700 text-white rounded-lg uppercase hover:opacity-95 p-3"
+                >
+                  Contact landlord
+                </button>
+              )}
+            {contact && <Contact listing={listing} />}
           </div>
         </>
       )}
