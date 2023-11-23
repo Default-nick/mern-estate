@@ -1,17 +1,17 @@
 ## Introdução
 
 Bem vindo (a) ao meu projeto.
-Este projeto foi criado com o intuito de aprender e se desenvolver através de uma video aula, que no término, colocarei o link do vídeo neste README.
+Este projeto foi criado com o intuito de aprender e se desenvolver através de uma video aula, que pode ser acessada por esse link: https://www.youtube.com/watch?v=VAaUy_Moivw. Conteúdo espetacular, recomendadíssimo!
 Todas as informações presentes neste projeto são **simuladas**.
 
 ## Tecnologias
 
-Este projeto será feito utilizando MERN (MongoDB, Express, ReactJS e NodeJS).
-Também haverá implementação de JWT, Firebase, Google OAuth, Tailwind CSS, entre outros.
+Este projeto foi feito utilizando MERN (MongoDB, Express, ReactJS e NodeJS).
+Também houve implementação de JWT, Firebase, Google OAuth, Tailwind CSS, entre outros.
 
 ## Propósito
 
-A idéia é simular um site de compra de imóveis, com CRUD, login, autenticação, edição de perfil e tudo mais.
+A ideia do projeto é simular um site de compra e aluguel de imóveis, login, autenticação (também via Google), edição de perfil, CRUD de anúncios e tudo mais.
 
 ## Estado do código
 
