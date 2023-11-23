@@ -20,7 +20,7 @@ export default function ListingItem({ listing }) {
     imageUrls[0] ||
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTJDVyUM1MgIX2q0bec5HnG8TnpQDTSVt58w&usqp=CAU";
   return (
-    <div className="bg-white shadow-md hover:shadow-lg transition-shadow overflow-hidden rounded-lg w-full sm:w-[320px]">
+    <div className="bg-white shadow-md hover:shadow-lg transition-shadow overflow-hidden rounded-lg w-full sm:w-[260px]">
       <Link to={`/listing/${_id}`}>
         <img
           src={image}
